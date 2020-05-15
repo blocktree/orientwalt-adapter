@@ -132,7 +132,7 @@ func (decoder *TransactionDecoder) CreateHTDFRawTransaction(wrapper openwallet.W
 		return addressesBalanceList[i].Balance.Cmp(addressesBalanceList[j].Balance) >= 0
 	})
 
-	fee := decoder.wm.Config.FixedFee
+	fee := decoder.wm.Config.GasLimit * decoder.wm.Config.GasPrice
 
 	var amountStr, to string
 	for k, v := range rawTx.To {
@@ -385,7 +385,7 @@ func (decoder *TransactionDecoder) CreateSimpleSummaryRawTransaction(wrapper ope
 
 		//this.wm.Log.Debug("sumAmount:", sumAmount)
 		//计算手续费
-		fee := big.NewInt(int64(decoder.wm.Config.FixedFee)) //(int64(decoder.wm.Config.FeeCharge))
+		fee := big.NewInt(int64(decoder.wm.Config.GasLimit * decoder.wm.Config.GasPrice)) //(int64(decoder.wm.Config.FeeCharge))
 
 		//减去手续费
 		sumAmount_BI.Sub(sumAmount_BI, fee)
