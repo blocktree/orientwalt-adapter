@@ -46,7 +46,7 @@ isScanMemPool = false
 # fixed fee to pay in satoshi
 fixedFee = 3000000
 
-gasLimit = 200000
+gasLimit = 30000
 gasPrice = 100
 
 # Cache data file directory, default = "", current directory: ./data
